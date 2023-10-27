@@ -55,7 +55,7 @@
 
 
                     // make a line through the letter
-                    $(this).css("text-decoration", "line-through");
+                    $(this).css("font-color", "red");
 
                     // if the letter has already been clicked on, 
                     // let the user know it's already been tried
@@ -74,7 +74,7 @@
                       // are they out of tries? then they lost!
                       if (tries < 1) {
                         gameLost = true;
-                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE! :(");
                       }
 
                     
@@ -103,7 +103,7 @@
                       // check if the player has won the game
                       if (! blank.includes("-")) {
                         gameWon = true;
-                        $("#info").text("YOU WON! Great job!");
+                        $("#info").text("YOU WON! Great job! :)");
 
                       }
 
