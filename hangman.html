@@ -4,15 +4,22 @@
     <title>Hangman!</title>
     <style>
       #alphabet { margin: auto;
-                  padding: 20px; }
+                  padding: 20px;
+                font-family: "marker felt";}
       #word { margin: auto;
               font: 400em serif bold;
               padding: 20px;
+             font-family: "marker felt";
             }
       #info { padding: 20px; 
               font-color: red;
-              background-color: yellow; 
+              background-color: FFD733; 
+             font-family: "marker felt";
             }
+      #guesses {font-family: "marker felt";
+               }
+      
+      
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -67,7 +74,7 @@
                       // are they out of tries? then they lost!
                       if (tries < 1) {
                         gameLost = true;
-                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE! :(");
                       }
 
                     
@@ -96,7 +103,7 @@
                       // check if the player has won the game
                       if (! blank.includes("-")) {
                         gameWon = true;
-                        $("#info").text("YOU WON! Great job!");
+                        $("#info").text("YOU WON! Great job! :)");
 
                       }
 
@@ -117,7 +124,7 @@
     </script>
   </head>
   <body>
-     <h1>Let's play Hangman!</h1>
+     <h1 style ="font-family: marker felt">Let's play Hangman!</h1>
      <div id="guesses"></div>
      <div id="info"></div>
      <div id="word"></div>
@@ -151,4 +158,3 @@
      </div>
   </body>
 </html>
-
