@@ -67,7 +67,7 @@
                       // are they out of tries? then they lost!
                       if (tries < 1) {
                         gameLost = true;
-                        $("#info).text("Sorry, you're out of guesses. YOU LOSE!");
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
                       }
 
                     
@@ -94,6 +94,11 @@
 
                      
                       // check if the player has won the game
+                      if (! blank.includes("-")) {
+                        gameWon = true;
+                        $("#info").text("YOU WON! Great job!");
+
+                      }
 
 
                     }
