@@ -25,24 +25,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
-     marker.bindPopup("Grand Hotel");
-
-var circle = L.circle([45.85782, -84.606], {
-    color: 'yellow',
-    fillColor: '#fffe6f',
-    fillOpacity: 0.5,
-    radius: 150
-}).addTo(map);
-     circle.bindPopup("Arch Rock");
-
-var polygon = L.polygon([
-    [45.862104217102754, -84.62558076618502],
-    [45.861527960304194, -84.63070328245544],
-    [45.85295226967853, -84.6286713597656],
-    [45.85335861960911, -84.62345706859493
-]).addTo(map);
-
      
 
      </script>
