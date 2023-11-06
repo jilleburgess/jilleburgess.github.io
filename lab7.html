@@ -36,16 +36,21 @@ radius: 150
 }).addTo(map);
 circle.bindPopup("Arch Rock");
 
+var circle = L.circle([45.85789078065473, -84.6476002244639], {
+color: 'orange',
+fillColor: '#FFA833',
+fillOpacity: 0.5,
+radius: 150
+}).addTo(map);
+circle.bindPopup("Sunset Rock");     
+
 var polygon = L.polygon([
 [45.86388492312588, -84.64380239223269],
 [45.86632047742991, -84.63049863679827],
+[45.865372, -84.630188],     
 [45.863078, -84.643395],
-[45.865372, -84.630188]     
 ]).addTo(map);
-polygon.bindPopup("Mackinac Island Airport")     
-
-
-     
+polygon.bindPopup("Mackinac Island Airport")
 
      </script>
 </script>
