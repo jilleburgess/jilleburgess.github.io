@@ -28,6 +28,15 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
 marker.bindPopup("Grand Hotel");
 
+var circle = L.circle([45.85782, -84.606], {
+color: 'yellow',
+fillColor: '#fffe6f',
+fillOpacity: 0.5,
+radius: 150
+}).addTo(map);
+circle.bindPopup("Arch Rock");
+
+
      
 
      </script>
