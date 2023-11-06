@@ -1,4 +1,4 @@
-<!DOCTYPE html><html>
+<html>
 <head>
      <title>"My first leaflet page!"</title>
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -10,8 +10,8 @@
      crossorigin=""></script>
 
 <style>
-     #map { height: 650px;
-          width: 1100px;}
+     #map { height: 700px;
+          width: 1000px;}
 </style>
 </head>
 <body class="">
@@ -19,13 +19,14 @@
 
 <script>
 
-var map = L.map('map').setView([45.860728356913704, -84.61986761143643], 30);
+var map = L.map('map').setView([45.860728356913704, -84.61986761143643], 17);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 23,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
 var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
+     marker.bindPopup("Grand Hotel");
 
 var circle = L.circle([45.85782, -84.606], {
     color: 'yellow',
@@ -33,6 +34,7 @@ var circle = L.circle([45.85782, -84.606], {
     fillOpacity: 0.5,
     radius: 150
 }).addTo(map);
+     circle.bindPopup("Arch Rock");
 
 var polygon = L.polygon([
     [45.862104217102754, -84.62558076618502],
@@ -41,6 +43,10 @@ var polygon = L.polygon([
     [45.85335861960911, -84.62345706859493
 ]).addTo(map);
 
+     map.on('click', onMapClick);
+
      </script>
+</script>
 </div>
+</body>
 </html>
