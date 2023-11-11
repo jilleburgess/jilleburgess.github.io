@@ -48,7 +48,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap! -- ##1 here
-map = L.map('map').setView([0,0], 10);
+map = L.map('map').setView([0,0],10);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from openTopoMap
@@ -65,7 +65,7 @@ map = L.map('map').setView([0,0], 10);
 
 		// this is an object to keep track of our three basemaps -- ##2 here
 var baseMaps = { "OpenStreetMap" : OSMTiles,
-			   "Humanitarian OSM" : HOTOSMTiles,
+		"Humanitarian OSM" : HOTOSMTiles,
               "OpenTopoMap" : OpenTopoMap };
 
 
@@ -88,8 +88,8 @@ $.getJSON('./acs_denver_2021.geojson', function(data) {
 			newLayer = L.geoJSON(data);
 			layerControl.addOverlay(newLayer, "Highway Markers");
 		});
-})
 
+}
 
 	// end document ready
 	});
