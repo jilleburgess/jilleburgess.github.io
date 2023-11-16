@@ -101,7 +101,7 @@ $.getJSON('./acs_denver_2021.geojson', function(data) {
 	acsDenver2021Layer = L.geoJSON(data,
                                  { style: style1,
 				 onEachFeature: function(feature, layer) {
-					 layer.bindPopup("Percent Hispanic: " +
+					 layer.bindPopup("Percentage of Hispanic Individuals: " +
 							 feature.properties.PCT_HISPANIC + '%');
 					 }
 				 }
