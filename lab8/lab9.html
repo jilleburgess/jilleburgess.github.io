@@ -75,14 +75,14 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     // function to style my choropleth map
     function style1(feature) {
 	d = feature.properties.PCT_HISPANIC;
-	answer = d > 75 ? '#800026' :
-		 d > 60 ? '#DB0026' :
-		 d > 45 ? '#E31A1C' :
-		 d > 30 ? '#FC4E2A' :
-		 d > 15  ? '#FD8D3C' :
-		 d > 5  ? '#FEB24C' :
-		 d > 1  ? '#FED976' :
-			  '#FFEDA0' ;
+	answer = d > 75 ? '#4a1486' :
+		 d > 55 ? '#6a51a3' :
+		 d > 40 ? '#807dba' :
+		 d > 25 ? '#9e9ac8' :
+		 d > 10 ? '#bcbddc' :
+		 d > 5  ? '#dadaeb' :
+		 d > 1  ? '#efedf5' :
+			  '#fcfbfd' ;
 	   
 	    styleReturn = {
 		    fillColor : answer,
