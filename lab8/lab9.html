@@ -74,13 +74,13 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
     // function to style my choropleth map
     function style1(feature) {
-	d = feature.properties.PCT_POVERTY;
-	answer = d > 30 ? '#800026' :
-		 d > 20 ? '#DB0026' :
-		 d > 15 ? '#E31A1C' :
-		 d > 10 ? '#FC4E2A' :
-		 d > 5  ? '#FD8D3C' :
-		 d > 3  ? '#FEB24C' :
+	d = feature.properties.PCT_HISPANIC;
+	answer = d > 75 ? '#800026' :
+		 d > 60 ? '#DB0026' :
+		 d > 45 ? '#E31A1C' :
+		 d > 30 ? '#FC4E2A' :
+		 d > 15  ? '#FD8D3C' :
+		 d > 5  ? '#FEB24C' :
 		 d > 1  ? '#FED976' :
 			  '#FFEDA0' ;
 	   
@@ -101,8 +101,8 @@ $.getJSON('./acs_denver_2021.geojson', function(data) {
 	acsDenver2021Layer = L.geoJSON(data,
                                  { style: style1,
 				 onEachFeature: function(feature, layer) {
-					 layer.bindPopup("Percent Poverty: " +
-							 feature.properties.PCT_POVERTY + '%');
+					 layer.bindPopup("Percent Hispanic: " +
+							 feature.properties.PCT_HISPANIC + '%');
 					 }
 				 }
                                 ).addTo(map);
