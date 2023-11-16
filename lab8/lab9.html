@@ -76,12 +76,12 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     function style1(feature) {
 	d = feature.properties.PCT_HISPANIC;
 	answer = d > 80 ? '#4a1486' :
-		 d > 65 ? '#6a51a3' :
+		 d > 60 ? '#6a51a3' :
 		 d > 40 ? '#807dba' :
-		 d > 25 ? '#9e9ac8' :
-		 d > 15 ? '#bcbddc' :
-		 d > 10  ? '#dadaeb' :
-		 d > 5  ? '#efedf5' :
+		 d > 15 ? '#9e9ac8' :
+		 d > 8 ? '#bcbddc' :
+		 d > 4  ? '#dadaeb' :
+		 d > 1  ? '#efedf5' :
 			  '#fcfbfd' ;
 	   
 	    styleReturn = {
