@@ -79,13 +79,13 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     // function to style my choropleth map
     function style1(feature) {
 	d = feature.properties.Median_HH_Income;
-	answer = d > 100000 ? '#4a1486' :
-		 d > 80000 ? '#6a51a3' :
-		 d > 60000 ? '#807dba' :
-		 d > 40000 ? '#9e9ac8' :
-		 d > 20000 ? '#bcbddc' :
-		 d > 12000 ? '#efedf5' :
-			     '#fcfbfd' ;
+	answer = d > 100000 ? '#006d2c' :
+		 d > 80000 ? '#2ca25f' :
+		 d > 60000 ? '#66c2a4' :
+		 d > 40000 ? '#99d8c9' :
+		 d > 20000 ? '#ccece6' :
+		 d > 12000 ? '#edf8fb' ;
+			     
 	   
 	    styleReturn = {
 		    fillColor : answer,
