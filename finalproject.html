@@ -51,7 +51,7 @@
 map = L.map('map').setView([0,0],10);
 
 		
-		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from openTopoMap
+		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
 	var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -60,14 +60,14 @@ map = L.map('map').setView([0,0],10);
 			maxZoom: 19,
     			attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
 	var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
-	maxZoom: 16
+			maxZoom: 19,
+			attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
 });
 
 		// this is an object to keep track of our three basemaps -- ##2 here
 var baseMaps = { "OpenStreetMap" : OSMTiles,
 		"Humanitarian OSM" : HOTOSMTiles,
-              	"OpenTopoMap" : OpenTopoMap };
+              	"NatGeoMap" : Esri_NatGeoWorldMap };
 
 
 		// the control let's the user turn on / off layers -- ##3 here
