@@ -104,8 +104,8 @@ $.getJSON('./KEEDPublishingSocioEconomic.geojson', function(data) {
 	Detroit2014data = L.geoJSON(data,
                                  { style: style1,
 				 onEachFeature: function(feature, layer) {
-					 layer.bindPopup("Percentage of Hispanic Individuals: " +
-							 feature.properties.PCT_HISPANIC + '%');
+					 layer.bindPopup("Median Household Income: " + '$' +
+							 feature.properties.Median_HH_Income);
 					 }
 				 }
                                 ).addTo(map);
@@ -114,7 +114,7 @@ $.getJSON('./KEEDPublishingSocioEconomic.geojson', function(data) {
 	map.panTo(Detroit2014data.getBounds().getCenter());
 
 	// add the map to the layer controls
-	layerControl.addOverlay(Detroit2014data, "Census 2021");
+	layerControl.addOverlay(Detroit2014data, "Census 2014");
 
 		// let's try to add some remote DRCOG data
 		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
