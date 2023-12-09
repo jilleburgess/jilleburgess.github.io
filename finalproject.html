@@ -120,11 +120,9 @@ $.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
 
 	MuleDeerRange = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .3}).addTo(map);
 
-	// move the map to the area of the data
-	map.panTo(MuleDeerRange.getBounds().getCenter());
 
 	// add the map to the layer controls
-	var layerControl = L.control.layers(basemaps, null).addTo(map);
+	layerControl.addOverlay(MuleDeerRange, "Mule Deer Range");
 		});
 
 
@@ -137,7 +135,7 @@ $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 	map.panTo(ElkRange.getBounds().getCenter());
 
 	// add the map to the layer controls
-	var layerControl = L.control.layers(basemaps, null).addTo(map);
+	layerControl.addOverlay(ElkRange, "Elk Range");
 		});	
 
 	// let's add the Bighorn Sheep data
@@ -145,11 +143,8 @@ $.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
 
 	BighornSheepRange = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .3}).addTo(map);
 
-	// move the map to the area of the data
-	map.panTo(BighornSheepRange.getBounds().getCenter());
-
 	// add the map to the layer controls
-	var layerControl = L.control.layers(basemaps, null).addTo(map);
+	layerControl.addOverlay(BighornSheepRange, "Bighorn Sheep Range");
 		});
 		
 
