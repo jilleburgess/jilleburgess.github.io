@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Mountain Lion Range in California</title>
+	<title>Mountain Lion and Prey Ranges in California</title>
 	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
@@ -20,17 +20,17 @@
 			margin: 0;
 		}
 		
-		#map { width: 60%; height: 95%;
+		#map { width: 60%; height: 90%;
 		     margin-left: 25px;
 		     margin-right: auto;}
 		
-		h1 { color: #3293a8;
+		h1 { color: #000000;
 		     font-family: "Garamond", serif;
 		     font-size: 20px;
 		    }
 		
 		p { font: serif 10px;
-		    color: #3293a8;
+		    color: #000000;
 		  }
 		
 		#header {
@@ -66,7 +66,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-var map = L.map('map').setView([0,0],10);
+map = L.map('map').setView([0,0],10);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -106,7 +106,7 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
-
+		// conver the file into a layer
 	MountainLionRange = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
@@ -147,12 +147,25 @@ $.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
 	layerControl.addOverlay(BighornSheepRange, "Bighorn Sheep Range");
 		});
 		
-
+	// add markers to the map
 var marker = L.marker([40.67220564623849, -123.6501561247053]).addTo(map);
 marker.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
 
-	// end document ready
+	// add a legend
+var legend = L.control({position: 'bottomright'});
 
+legend.onAdd = function (map) {
+	var div = L.DomUtil.create('div', 'info legend');
+
+	return div;
+};
+
+legend.addTo(map);
+
+	});
+		
+	// end document ready
+	
 
 </script>
 </head>
