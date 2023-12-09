@@ -116,6 +116,21 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
 
+
+
+// let's add the Mule Deer Range data
+$.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
+
+	MuleDeerRange = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .3}).addTo(map);
+
+	// move the map to the area of the data
+	map.panTo(MuleDeerRange.getBounds().getCenter());
+
+	// add the map to the layer controls
+	var layerControl = L.control.layers(basemaps, null).addTo(map);
+		});
+		
+
 		var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
 marker.bindPopup("The famous and historic Grand Hotel, known for having the world's largest porch and hosting five U.S. presidents, Thomas Edison, and Mark Twain");
 
