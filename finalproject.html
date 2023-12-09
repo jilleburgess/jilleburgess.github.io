@@ -66,7 +66,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-map = L.map('map').setView([0,0],10);
+var map = L.map('map').setView([0,0],10);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -106,34 +106,19 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 
-	Mountain_Lion_Range = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
+	MountainLionRange = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// move the map to the area of the data
-	map.panTo(Mountain_Lion_Range.getBounds().getCenter());
+	map.panTo(MountainLionRange.getBounds().getCenter());
 
 	// add the map to the layer controls
 	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
-
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-
-    div.innerHTML = '<h2>Legend</h2>';
-    }
-
-    return div;
-};
-
-legend.addTo(map);
-
 	
 });
 
 	// end document ready
-	});
+
 
 </script>
 </head>
