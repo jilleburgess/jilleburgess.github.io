@@ -110,7 +110,7 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 	MountainLionRange = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
-	var layerControl = L.control.layers(basemaps, null).addTo(map);
+	layerControl.addOverlay(MountainLionRange, "Mountain Lion Range");
 		});
 
 
