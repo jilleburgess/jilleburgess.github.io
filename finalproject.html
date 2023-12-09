@@ -105,20 +105,14 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
-		// convert the file (data) into a layer
-	Mountain_Lion_Range = L.geoJSON(data,
-                                 {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
+
+	Mountain_Lion_Range = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// move the map to the area of the data
 	map.panTo(Mountain_Lion_Range.getBounds().getCenter());
 
 	// add the map to the layer controls
-	layerControl.addOverlay(Mountain_Lion_Range, "Mountain Lion Range");
-
-		// let's try to add some remote DRCOG data
-		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
-			newLayer = L.geoJSON(data);
-			layerControl.addOverlay(newLayer, "Highway Markers");
+	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
 
 var legend = L.control({position: 'bottomright'});
@@ -127,7 +121,7 @@ legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend');
 
-    div.innerHTML = '<h2>Mountain Lion Range</h2><br>';
+    div.innerHTML = '<h2>Legend</h2>';
     }
 
     return div;
