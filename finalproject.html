@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>2014 Detroit, MI Data</title>
+	<title>Mountain Lion Range in California</title>
 	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
@@ -20,7 +20,7 @@
 			margin: 0;
 		}
 		
-		#map { width: 95%; height: 80%;
+		#map { width: 80%; height: 95%;
 		     margin-left: 25px;
 		     margin-right: auto;}
 		
@@ -65,7 +65,7 @@
 	// right order
 	$(document).ready(function() {
 
-		// let's create our basemap! -- ##1 here
+		// let's create our basemap!
 map = L.map('map').setView([0,0],10);
 
 		
@@ -82,13 +82,13 @@ map = L.map('map').setView([0,0],10);
 			attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
 });
 
-		// this is an object to keep track of our three basemaps -- ##2 here
+		// this is an object to keep track of our three basemaps
 var baseMaps = { "OpenStreetMap" : OSMTiles,
 		"Humanitarian OSM" : HOTOSMTiles,
               	"NatGeoMap" : Esri_NatGeoWorldMap };
 
 
-		// the control let's the user turn on / off layers -- ##3 here
+		// the control let's the user turn on / off layers
 var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
     // function to style my choropleth map
