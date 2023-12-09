@@ -115,6 +115,32 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 	// add the map to the layer controls
 	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
+
+		var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
+marker.bindPopup("The famous and historic Grand Hotel, known for having the world's largest porch and hosting five U.S. presidents, Thomas Edison, and Mark Twain");
+
+var marker = L.marker([40.67220564623849, -123.6501561247053], {
+color: 'yellow',
+fillColor: '#fffe6f',
+fillOpacity: 0.5,
+}).addTo(map);
+circle.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
+
+var marker = L.marker([45.85789078065473, -84.6476002244639], {
+color: 'orange',
+fillColor: '#FFA833',
+fillOpacity: 0.5,
+radius: 150
+}).addTo(map);
+circle.bindPopup("Sunset Rock, a rock formation that offers a beautiful view of Lake Huron and the Mackinac Bridge");     
+
+var marker = L.marker([
+[45.86388492312588, -84.64380239223269],
+[45.86632047742991, -84.63049863679827],
+[45.865372, -84.630188],     
+[45.863078, -84.643395],
+]).addTo(map);
+polygon.bindPopup("Mackinac Island Airport")
 	
 });
 
@@ -127,7 +153,7 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 
 
 <div id="header">
-	<h1><a href="https://www.census.gov/programs-surveys/acs">Mountain Lion Range of California</a></h1>
+	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Mountain Lion Range of California</a></h1>
 	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a></p>
 </div>
 <div id="map"></div>
