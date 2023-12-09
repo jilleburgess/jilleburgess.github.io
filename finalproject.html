@@ -120,8 +120,7 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 	Detroit2014data = L.geoJSON(data,
                                  { style: style1,
 				 onEachFeature: function(feature, layer) {
-					 layer.bindPopup("Median Household Income: " + '$' +
-							 feature.properties.Median_HH_Income);
+					 layer.bindPopup("Mountain Lion Range");
 					 }
 				 }
                                 ).addTo(map);
