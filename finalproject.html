@@ -102,15 +102,15 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
 	    };
 	    return styleReturn;
 
-    }
+    }	
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 		// conver the file into a layer
-	MountainLionRange = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
+	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
-	layerControl.addOverlay(MountainLionRange, "Mountain Lion Range");
+	layerControl.addOverlay(MountainLionRangeLayer, "Mountain Lion Range");
 		});
 
 
@@ -118,21 +118,21 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 // let's add the Mule Deer Range data
 $.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
 
-	MuleDeerRange = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .3}).addTo(map);
+	MuleDeerRangeLayer = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .3}).addTo(map);
 
 
 	// add the map to the layer controls
-	layerControl.addOverlay(MuleDeerRange, "Mule Deer Range");
+	layerControl.addOverlay(MuleDeerRangeLayer, "Mule Deer Range");
 		});
 
 
 // let's add the Elk Range data
 $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 
-	ElkRange = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .3}).addTo(map);
+	ElkRangeLayer = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// move the map to the area of the data
-	map.panTo(ElkRange.getBounds().getCenter());
+	map.panTo(ElkRangeLayer.getBounds().getCenter());
 
 	// add the map to the layer controls
 	layerControl.addOverlay(ElkRange, "Elk Range");
@@ -141,11 +141,22 @@ $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 	// let's add the Bighorn Sheep data
 $.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
 
-	BighornSheepRange = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .3}).addTo(map);
+	BighornSheepRangeLayer = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
-	layerControl.addOverlay(BighornSheepRange, "Bighorn Sheep Range");
+	layerControl.addOverlay(BighornSheepRangeLayer, "Bighorn Sheep Range");
 		});
+
+
+var overlayMaps = {
+"MountainLionRangeLayer":layer1,
+"MuleDeerRangeLayer":layer2,
+"ElkRangeLayer":layer3
+"BighornSheepRangeLayer":layer4,
+};
+
+// Layer control
+L.control.layers(overlayMaps).addTo(map);
 		
 	// add markers to the map
 var marker = L.marker([40.67220564623849, -123.6501561247053]).addTo(map);
