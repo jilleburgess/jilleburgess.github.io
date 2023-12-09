@@ -66,7 +66,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-var map = L.map('map').setView([0,0],10);
+var map = L.map('map').setView([0,0],7);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -91,16 +91,7 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
 		// the control let's the user turn on / off layers
 var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
-    // function to style my choropleth map
-    function style1(feature) {	   
-	    styleReturn = {
-		    weight : 1,
-		    opacity : 1,
-		    color : 'blue',
-		    dashArray : '3',
-		    fillOpacity : 0.7
-	    };
-	    return styleReturn;
+
     }
     
 		// let's add the Mountain Lion Range data
