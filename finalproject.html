@@ -119,12 +119,8 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 		var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
 marker.bindPopup("The famous and historic Grand Hotel, known for having the world's largest porch and hosting five U.S. presidents, Thomas Edison, and Mark Twain");
 
-var marker = L.marker([40.67220564623849, -123.6501561247053], {
-color: 'yellow',
-fillColor: '#fffe6f',
-fillOpacity: 0.5,
-}).addTo(map);
-circle.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
+var marker = L.marker([40.67220564623849, -123.6501561247053]).addTo(map);
+marker.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
 
 var marker = L.marker([45.85789078065473, -84.6476002244639], {
 color: 'orange',
