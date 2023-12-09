@@ -135,7 +135,7 @@ $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 	map.panTo(ElkRangeLayer.getBounds().getCenter());
 
 	// add the map to the layer controls
-	layerControl.addOverlay(ElkRange, "Elk Range");
+	layerControl.addOverlay(ElkRangeLayer, "Elk Range");
 		});	
 
 	// let's add the Bighorn Sheep data
@@ -166,8 +166,9 @@ marker.bindPopup("The mountain lion has many other common names including cougar
 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
-	var div = L.DomUtil.create('div', 'info legend');
-
+	var div = L.DomUtil.create('div', 'legend');
+div.innerHTML = "<p><b>Legend</b></p><table style='width: 150px;'><tr><td style='width: 20px; background-color: #fec44f;'></td><td>Mountain Lion Range</td></tr></table>";
+	
 	return div;
 };
 
