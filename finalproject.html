@@ -66,7 +66,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-var map = L.map('map').setView([0,0],7);
+var map = L.map('map').setView([0,0],10);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -109,9 +109,6 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 
 	MountainLionRange = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
-	// move the map to the area of the data
-	map.panTo(MountainLionRange.getBounds().getCenter());
-
 	// add the map to the layer controls
 	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
@@ -129,31 +126,35 @@ $.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
 	// add the map to the layer controls
 	var layerControl = L.control.layers(basemaps, null).addTo(map);
 		});
-		
 
-		var marker = L.marker([45.85171686107835, -84.62636928561189]).addTo(map);
-marker.bindPopup("The famous and historic Grand Hotel, known for having the world's largest porch and hosting five U.S. presidents, Thomas Edison, and Mark Twain");
+
+// let's add the Elk Range data
+$.getJSON('./Elk_Range_CWHR.geojson', function(data) {
+
+	ElkRange = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .3}).addTo(map);
+
+	// move the map to the area of the data
+	map.panTo(ElkRange.getBounds().getCenter());
+
+	// add the map to the layer controls
+	var layerControl = L.control.layers(basemaps, null).addTo(map);
+		});	
+
+	// let's add the Bighorn Sheep data
+$.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
+
+	BighornSheepRange = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .3}).addTo(map);
+
+	// move the map to the area of the data
+	map.panTo(BighornSheepRange.getBounds().getCenter());
+
+	// add the map to the layer controls
+	var layerControl = L.control.layers(basemaps, null).addTo(map);
+		});
+		
 
 var marker = L.marker([40.67220564623849, -123.6501561247053]).addTo(map);
 marker.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
-
-var marker = L.marker([45.85789078065473, -84.6476002244639], {
-color: 'orange',
-fillColor: '#FFA833',
-fillOpacity: 0.5,
-radius: 150
-}).addTo(map);
-circle.bindPopup("Sunset Rock, a rock formation that offers a beautiful view of Lake Huron and the Mackinac Bridge");     
-
-var marker = L.marker([
-[45.86388492312588, -84.64380239223269],
-[45.86632047742991, -84.63049863679827],
-[45.865372, -84.630188],     
-[45.863078, -84.643395],
-]).addTo(map);
-polygon.bindPopup("Mackinac Island Airport")
-	
-});
 
 	// end document ready
 
