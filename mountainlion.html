@@ -55,14 +55,14 @@
 
 		 #photocontainer {margin-top: 25px;
 	    margin-right: 50px;
-	    margin-left: auto 0px;
+	    margin-left: 25px;
 	       margin-bottom: 75px;
 	    width: 375px;
 	    height: auto;
 	    padding: 15px;
 	    border: 5px solid #5cd65c;
 	  text-align: justify;
-	  background-color: #e6ffe6;
+	  background-color: #689975;
 	       float: left;
     }
 		
@@ -92,7 +92,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-map = L.map('map').setView([38.74203810504401, -120.49345813586912],5);
+map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.25);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -193,8 +193,9 @@ L.control.layers(overlayMaps).addTo(map);
 	// toggle the photo on and off
 
 
-	$("button").click(function(){
- 	$("photo").toggle();
+	$("#togglephoto").click(function() {
+	console.log("toggle the photo");
+ 	$("#mountainlionpic").fadeToggle();
 	});	
 
 	});
