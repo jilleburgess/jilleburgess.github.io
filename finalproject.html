@@ -42,6 +42,10 @@
 		
 		a { text-decoration: none; color: inherit; }
 
+		#MountainLionImage {
+			display: none;
+		}
+
 		.legend {
     			line-height: 18px;
     			color: #555;
@@ -177,8 +181,14 @@ L.control.layers(overlayMaps).addTo(map);
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
 	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a><br><button id="infobutton">Click here</button> to see an image of a Mountain Lion.<br><button id="infobutton">Click here</button> to see images of a Mountain Lion's prey.</p>
-
+<img id="MountainLionImage"
+	src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg"
+	alt="Mountain Lion image from U.S. Forest Service Department of Agriculture" />
+	
 </div>
+
+<button type="button" onClick="show()" id="btnID">
+</button>
 <div id="map"></div>
 
 
