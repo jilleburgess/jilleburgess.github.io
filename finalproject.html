@@ -75,6 +75,20 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
               	"NatGeoMap" : Esri_NatGeoWorldMap };
 
     }	
+
+		// the control let's the user turn on / off layers
+ var layerControl = L.control.layers(baseMaps,null).addTo(map);
+
+ 		   // function to style my map
+     function style1(feature) {	   
+ 	    styleReturn = {
+ 		    weight : 1,
+ 		    opacity : 1,
+ 		    color : 'blue',
+ 		    dashArray : '3',
+ 		    fillOpacity : 0.7
+ 	    };
+ 	    return styleReturn;
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
