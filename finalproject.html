@@ -206,12 +206,18 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 	// toggle the photo on and off
+        // Click event for the button
+        $("#togglephoto").click(function() {
+            // Toggle the visibility of the image
+            $("#mountainlionpic").toggle();
+        });
+    });
 	
-	$("togglephoto").click(function() {
-	console.log("toggle the photo");
- 	$("photocontainer").css("display", "none");
-	});	
-	});
+	//$("togglephoto").click(function() {
+	//console.log("toggle the photo");
+ 	//$("photocontainer").css("display", "none");
+	//});	
+	//});
 	// end document ready
 
 
