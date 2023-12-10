@@ -23,6 +23,9 @@
 		#map { width: 60%; height: 90%;
 		     margin-left: 25px;
 		     margin-right: auto;}
+		#photo { width: 40%; height: auto;
+			margin-left: 25px;
+		     margin-right: auto;}
 		
 		h1 { color: #000000;
 		     font-family: "Garamond", serif;
@@ -64,6 +67,16 @@
 	// to make sure that everything loads in the 
 	// right order
 	$(document).ready(function() {
+
+	$("#button1").click( function() {
+           // if someone clicks on the button, this runs!
+           console.log("someone clicked on button1.");
+
+           $("#photo").toggle();
+        });
+
+     });
+
 
 		// let's create our basemap!
 map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
@@ -176,9 +189,11 @@ L.control.layers(overlayMaps).addTo(map);
 
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
-	<p>Data from <a href="https://data.cnra.ca.gov">California Department of Fish and Wildlife</a></p>
+	<p>Data from <a href="https://data.cnra.ca.gov">California Department of Fish and Wildlife</a><br><button id="button1">Click here to see a Mountain Lion.</button></p>
 </div>
 <div id="map"></div>
+
+<img id="photo" src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg" />
 
 
 </body>
