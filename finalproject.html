@@ -159,50 +159,10 @@ var overlayMaps = {
 L.control.layers(overlayMaps).addTo(map);
 		
 	// add markers to the map
-var marker = L.marker([40.67220564623849, -123.6501561247053]).addTo(map);
-marker.bindPopup("The mountain lion has many other common names including cougar, puma, panther, and catamount. The scientific name is <i>Puma concolor</i>.");
-
-
-function getColor(d) {
-        return d === 'MOUNTAIN LION'  ? "fec44f" :
-               d === 'MULE DEER'  ? "#cf64fa" :
-               d === 'Elk' ? '#8be879' :
-               d === 'BIGHORN SHEEP' ? '#92b4f7' :
-                            "#ff7f00";
-    }
-
-    function style(feature) {
-        return {
-            weight: 1.5,
-            opacity: 1,
-            fillOpacity: 1,
-            radius: 6,
-            fillColor: getColor(feature.properties.CName),
-            color: "grey"
-
-        };
-    }
+    
 
 	// add a legend
-var legend = L.control({position: 'bottomleft'});
-    legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend');
-    labels = ['<strong>Species Ranges</strong>'],
-    categories = ['Mountain Lion','Mule Deer','Elk','Bighorn Sheep'];
-
-    for (var i = 0; i < categories.length; i++) {
-
-            div.innerHTML += 
-            labels.push(
-                '<i class="circle" style="background:' + getColor(categories[i]) + '"></i> ' +
-            (categories[i] ? categories[i] : '+'));
-
-        }
-        div.innerHTML = labels.join('<br>');
-    return div;
-    };
-    legend.addTo(map);
 
 	});
 		
