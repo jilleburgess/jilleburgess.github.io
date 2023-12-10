@@ -65,12 +65,14 @@
 	// right order
 	$(document).ready(function() {
 
-	$("#button1").click(function() {
-
-	$("#div_ctr1").html(<img src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg" alt="Mountain Lion on rock">);
-        });
-
      });		
+
+	// toggle the photo on and off
+
+	$("#togglephoto").click(function() {
+		console.log("toggle the photo");
+	$("#mountainlionpic).fadeToggle();
+	});
 
 		// let's create our basemap!
 map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
@@ -183,7 +185,12 @@ L.control.layers(overlayMaps).addTo(map);
 
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
-	<p>Data from <a href="https://data.cnra.ca.gov">California Department of Fish and Wildlife</a><br><div id = "div_ctr1"<button id = "button1"></div>Click to see a Mountain Lion!</button></p>
+	<p>Data from <a href="https://data.cnra.ca.gov">California Department of Fish and Wildlife</a>
+		<br></p>
+</div>
+<div id="photo">
+	<img id="mountainlionpic" src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg" />
+		<button id ="togglephoto">Click to see a mountain lion!</button>
 </div>
 <div id="map"></div>
 
