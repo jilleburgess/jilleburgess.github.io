@@ -45,7 +45,7 @@
 		a { text-decoration: none; color: inherit; }
 
 		.MLimage {
-			width: 100%;
+			width: 200px;
 			height: auto;
 		}
 
@@ -72,6 +72,7 @@
 	// right order
 	$(document).ready(function() {
 		$("#MLimage").hide();
+		$("#imagebutton").text('Click to see a Mountain Lion');
 
 		// let's create our basemap!
 map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
@@ -168,14 +169,14 @@ legend.addTo(map);
 
 // button to show image
 var infoCounter = 2;
-$("#infobutton").click( function() {
+$("#imagebutton").click( function() {
 			infoCounter++;
 			if (infoCounter % 2 == 0) {
 				$("#pagetext").hide('slow');
-				$("#infobutton").text('Show info');
+				$("#imagebutton").text('Show info');
 			} else {
 				$("#pagetext").show('slow');
-				$("#infobutton").text('Hide info');
+				$("#imagebutton").text('Hide info');
 			}
 		});
 
@@ -190,8 +191,10 @@ $("#infobutton").click( function() {
 
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
-	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a><br><button id="infobutton">Click here</button> to see an image of a Mountain Lion.</p>
-<img id="MLimage"
+	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a><br></p>
+</div>
+	
+<div id="MLimage">
 	src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg"
 	alt="Mountain Lion image from U.S. Forest Service Department of Agriculture" />
 
