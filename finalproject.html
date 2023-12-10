@@ -207,22 +207,32 @@ legend.addTo(map);
 
 	// toggle the photo on and off
 
+var photo = document.getElementById("mountainlionpic");
+var button = document.getElementById("togglephoto");
+let toggle = false;
 
+feedbackToggle.addEventListener("click", function() {
+    toggle = !toggle;
+
+    if (toggle === true) {
+        photo.style.display = "block";
+    }
+    else {
+        photo.style.display = "none";
+    }
+});
+
+
+
+		
 const button = document.querySelector('togglephoto'); // select the button element
 var check = true;
-button.addEventListener('click', () => { // add a click event listener
-  console.log('Button clicked!'); 
-// If true mountain lion is off screen else show
-	if (check == true)
-	{
-		check = false;
-		document.getElementById("mountainlionpic").style.display = "none";
-	}
-	else
-	{
-		check = true; 
-		document.getElementById("mountainlionpic").style.display = "grid";
-	}
+button.addEventListener('click', () => 
+{ // add a click event listener
+  	console.log('Button clicked!'); 
+	// If true mountain lion is off screen else show
+	check = false;
+	document.getElementById("mountainlionpic").style.display = "none";
 	
 });
 
