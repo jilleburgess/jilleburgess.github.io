@@ -43,24 +43,6 @@
 		
 		a { text-decoration: none; color: inherit; }
 
-		#MountainLionImage {
-			display: none;
-		}
-
-		.legend {
-    			line-height: 18px;
-    			color: #555;
-   			background-color: #eeeeee;
-    			padding: 2px;
-		}
-		.legend i {
- 			width: 18px;
-  			height: 18px;
-    			float: left;
-    			margin-right: 8px;
-    			opacity: 0.8;
-		}
-
 	</style>
 
 <script>
@@ -91,21 +73,6 @@ map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
 var baseMaps = { "OpenStreetMap" : OSMTiles,
 		"Humanitarian OSM" : HOTOSMTiles,
               	"NatGeoMap" : Esri_NatGeoWorldMap };
-
-
-		// the control let's the user turn on / off layers
-var layerControl = L.control.layers(baseMaps,null).addTo(map);
-
-		   // function to style my choropleth map
-    function style1(feature) {	   
-	    styleReturn = {
-		    weight : 1,
-		    opacity : 1,
-		    color : 'blue',
-		    dashArray : '3',
-		    fillOpacity : 0.7
-	    };
-	    return styleReturn;
 
     }	
     
