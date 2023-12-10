@@ -207,13 +207,41 @@ legend.addTo(map);
 
 	// toggle the photo on and off
 
+
+const button = document.querySelector('button'); // select the button element
+var check = true;
+button.addEventListener('click', () => { // add a click event listener
+  console.log('Button clicked!'); 
+// If true mountain lion is off screen else show
+	if (check == true)
+	{
+		check = false;
+		document.getElementById("mountainlionpic").style.display = "none";
+	}
+	else
+	{
+		check = true; 
+		document.getElementById("mountainlionpic").style.display = "grid";
+	}
+	
+});
+
+	/*
+	document.addEventListener("click", togglePhoto)
+	function togglePhoto(event) {
+		var box = document.getElementById("button")
+		document.getElementById("mountainlionpic").style.display = "none";
+
+
+
+		
 	$("#togglephoto").click(function() {
 	console.log("toggle the photo");
  	$("#mountainlionpic").fadeToggle();
 	});	
 
 	});
-		
+		/*
 	// end document ready
 
 
