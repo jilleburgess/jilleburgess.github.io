@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Mountain Lions in California</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			font-family: Georgia;
+			background-color: '#f2edd5';
+		}
+		
+		#map { width: 60%; height: 90%;
+		     margin-left: 25px;
+		     margin-right: auto;}
+		
+		h1 { color: #000000;
+		     font-family: "Georgia", serif;
+		     font-size: 20px;
+		    }
+		
+		p { font: serif 10px;
+		    color: #000000;
+		  }
+		
+		#header {
+			width: 100%;
+			margin-left: 25px;
+			margin-right: auto;
+			align: center;
+		}
+		
+		a { text-decoration: none; color: inherit; }
+
+		.MLimage {
+			width: 100%;
+			height: auto;
+		}
+
+		.legend {
+    			line-height: 18px;
+    			color: #555;
+   			background-color: #eeeeee;
+    			padding: 2px;
+		}
+		.legend i {
+ 			width: 18px;
+  			height: 18px;
+    			float: left;
+    			margin-right: 8px;
+    			opacity: 0.8;
+		}
+
+	</style>
+
+<script>
+
+        // the document ready wraps our javascript
+	// to make sure that everything loads in the 
+	// right order
+	$(document).ready(function() {
+		$("#MLimage").hide();
+
+		// let's create our basemap!
+map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
+
+		
+		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
+	var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+	var HOTOSMTiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+    			attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+	var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+			maxZoom: 19,
+			attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+});
+
+		// this is an object to keep track of our three basemaps
+var baseMaps = { "OpenStreetMap" : OSMTiles,
+		"Humanitarian OSM" : HOTOSMTiles,
+              	"NatGeoMap" : Esri_NatGeoWorldMap };
+
+
+		// the control let's the user turn on / off layers
+var layerControl = L.control.layers(baseMaps,null).addTo(map);
+    
+		// let's add the Mountain Lion Range data
+$.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
+		// conver the file into a layer
+	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .2}).addTo(map);
+
+	// add the map to the layer controls
+	layerControl.addOverlay(MountainLionRangeLayer, "Mountain Lion Range");
+		});
+
+
+
+// let's add the Mule Deer Range data
+$.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
+
+	MuleDeerRangeLayer = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .2}).addTo(map);
+
+
+	// add the map to the layer controls
+	layerControl.addOverlay(MuleDeerRangeLayer, "Mule Deer Range");
+		});
+
+
+// let's add the Elk Range data
+$.getJSON('./Elk_Range_CWHR.geojson', function(data) {
+
+	ElkRangeLayer = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .2}).addTo(map);
+
+
+	// add the map to the layer controls
+	layerControl.addOverlay(ElkRangeLayer, "Elk Range");
+		});	
+
+	// let's add the Bighorn Sheep data
+$.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
+
+	BighornSheepRangeLayer = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .2}).addTo(map);
+
+	// add the map to the layer controls
+	layerControl.addOverlay(BighornSheepRangeLayer, "Bighorn Sheep Range");
+		});
+
+
+var overlayMaps = {
+"MountainLionRangeLayer":layer1,
+"MuleDeerRangeLayer":layer2,
+"ElkRangeLayer":layer3,
+"BighornSheepRangeLayer":layer4,
+};
+
+// Layer control
+L.control.layers(overlayMaps).addTo(map);
+		
+	// add markers to the map
+    
+
+	// add a legend
+var legend = L.control({ position: “bottomleft”});
+legend.onAdd = function(map) {
+var div = L.DomUtil.create(“div”, “legend”);
+
+div.innerHTML = “<h3>Legend</h3>”;
+
+	return div;
+
+	};
+legend.addTo(map);
+
+// button to show image
+var infoCounter = 2;
+$("#infobutton").click( function() {
+			infoCounter++;
+			if (infoCounter % 2 == 0) {
+				$("#pagetext").hide('slow');
+				$("#infobutton").text('Show info');
+			} else {
+				$("#pagetext").show('slow');
+				$("#infobutton").text('Hide info');
+			}
+		});
+
+		
+	// end document ready
+});
+
+</script>
+</head>
+<body>
+
+
+<div id="header">
+	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
+	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a><br><button id="infobutton">Click here</button> to see an image of a Mountain Lion.</p>
+<img id="MLimage"
+	src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg"
+	alt="Mountain Lion image from U.S. Forest Service Department of Agriculture" />
+
+</div>
+
+
+</body>
+</html>
+
