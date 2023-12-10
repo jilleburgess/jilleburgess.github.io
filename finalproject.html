@@ -206,34 +206,11 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 	// toggle the photo on and off
-			
-function togglePhoto() {
-	var photo = document.getElementById("photoMountainLion");
-	var button = document.getElementById("togglephoto");
-	let toggle = true;
-    	toggle = !toggle;
-    	console.log("TEST");
 	
-    	if (toggle === true) {
-       		photo.style.display = "block";
-    	}
-    	else {
-        	photo.style.display = "none";
-    }	
-
-	
-	//document.addEventListener("click", togglePhoto)
-	//function togglePhoto(event) {
-//		var box = document.getElementById("button")
-//		document.getElementById("mountainlionpic").style.display = "none";
-
-
-
-		
-//	$("#togglephoto").click(function() {
-//	console.log("toggle the photo");
- //	$("#mountainlionpic").fadeToggle();
-	//});	
+	$("#togglephoto").click(function() {
+	console.log("toggle the photo");
+ 	$("#mountainlionpic").style.display = "none";
+	});	
 
 	}
 	// end document ready
