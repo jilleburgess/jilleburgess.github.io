@@ -18,15 +18,16 @@
 		html, body {
 			height: 100%;
 			margin: 0;
-			font-family: 'Georgia';
 		}
 		
 		#map { width: 60%; height: 90%;
 		     margin-left: 25px;
-		     margin-right: auto;}
+		     margin-bottom: 75px;
+		     margin-right: 15px;
+		     }
 		
 		h1 { color: #000000;
-		     font-family: "Georgia", serif;
+		     font-family: "Garamond", serif;
 		     font-size: 20px;
 		    }
 		
@@ -40,8 +41,48 @@
 			margin-right: auto;
 			align: center;
 		}
+
+		#button {
+			margin-left: 25px;
+			margin-right: auto;
+		}
+
+		#mountainlionpic {
+			width: 300px;
+			height: auto;
+			margin-left: 25px;
+			margin-right: auto;
+		}
+
+		 #photocontainer {margin-top: 25px;
+	    margin-right: 50px;
+	    margin-left: 25px;
+	       margin-bottom: 75px;
+	    width: 375px;
+	    height: auto;
+	    padding: 15px;
+	    border: 5px solid #376343;
+	  text-align: justify;
+	  background-color: #689975;
+	       float: left;
+    }
 		
 		a { text-decoration: none; color: inherit; }
+
+		.legend {
+    		line-height: 18px;
+    		color: #555;
+    		background-color: #eeeeee;
+    		padding: 2px;
+		}
+		.legend i {
+   		width: 18px;
+    		height: 18px;
+		float: left;
+    		margin-right: 8px;
+    		opacity: 0.8;
+		}
+
 
 	</style>
 
@@ -53,7 +94,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
+map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.45);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -74,21 +115,22 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
 		"Humanitarian OSM" : HOTOSMTiles,
               	"NatGeoMap" : Esri_NatGeoWorldMap };
 
-    }	
 
 		// the control let's the user turn on / off layers
- var layerControl = L.control.layers(baseMaps,null).addTo(map);
+var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
- 		   // function to style my map
-     function style1(feature) {	   
- 	    styleReturn = {
- 		    weight : 1,
- 		    opacity : 1,
- 		    color : 'blue',
- 		    dashArray : '3',
- 		    fillOpacity : 0.7
- 	    };
- 	    return styleReturn;
+		   // function to style my choropleth map
+    function style1(feature) {	   
+	    styleReturn = {
+		    weight : 1,
+		    opacity : 1,
+		    color : 'blue',
+		    dashArray : '3',
+		    fillOpacity : 0.7
+	    };
+	    return styleReturn;
+
+    }	
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
@@ -141,7 +183,34 @@ L.control.layers(overlayMaps).addTo(map);
     
 
 	// add a legend
+	var legend = L.control({position: 'bottomright'});
 
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+	 colors = ['#fcfbfd','#efedf5','#dadaeb','#bcbddc','#9e9ac8','#807dba',
+                 '#6a51a3','#4a1486'];
+       labels = ['0 - 1%', '1 - 4%', '4 - 8%', '8 - 15%', '15 - 40%', 
+                 '40 - 60%', '60 - 80%','80%+' ];
+    // note that you'll want to change these values to match your classes
+
+    div.innerHTML = '<h2>% Hispanic</h2><br>';
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < colors.length; i++) {
+        div.innerHTML += '<i style="background:' + colors[i] + '"></i> ' + labels[i] + '<br>';
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
+	// toggle the photo on and off
+
+	$("#togglephoto").click(function() {
+	console.log("toggle the photo");
+ 	$("#mountainlionpic").fadeToggle();
+	});	
 
 	});
 		
@@ -155,12 +224,21 @@ L.control.layers(overlayMaps).addTo(map);
 
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
-	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a></p>
+	<p>Data from <a href="https://data.cnra.ca.gov">California Department of Fish and Wildlife</a>
+		<br></p>
 </div>
 
+<div id="photocontainer">	
+<div id="button">	
+	<button id ="togglephoto">Click to see a mountain lion!</button>
+</div>
+	
+<div id="photo">
+	<img id="mountainlionpic" src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg" />
+</div>
+</div>
 
 <div id="map"></div>
-
 
 </body>
 </html>
