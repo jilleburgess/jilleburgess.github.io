@@ -18,8 +18,6 @@
 		html, body {
 			height: 100%;
 			margin: 0;
-			font-family: Georgia;
-			background-color: '#f2edd5';
 		}
 		
 		#map { width: 60%; height: 90%;
@@ -27,7 +25,7 @@
 		     margin-right: auto;}
 		
 		h1 { color: #000000;
-		     font-family: "Georgia", serif;
+		     font-family: "Garamond", serif;
 		     font-size: 20px;
 		    }
 		
@@ -43,11 +41,6 @@
 		}
 		
 		a { text-decoration: none; color: inherit; }
-
-		.MLimage {
-			width: 200px;
-			height: auto;
-		}
 
 		.legend {
     			line-height: 18px;
@@ -71,8 +64,6 @@
 	// to make sure that everything loads in the 
 	// right order
 	$(document).ready(function() {
-		$("#MLimage").hide();
-		$("#imagebutton").text('Click to see a Mountain Lion');
 
 		// let's create our basemap!
 map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
@@ -99,11 +90,24 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
 
 		// the control let's the user turn on / off layers
 var layerControl = L.control.layers(baseMaps,null).addTo(map);
+
+		   // function to style my choropleth map
+    function style1(feature) {	   
+	    styleReturn = {
+		    weight : 1,
+		    opacity : 1,
+		    color : 'blue',
+		    dashArray : '3',
+		    fillOpacity : 0.7
+	    };
+	    return styleReturn;
+
+    }	
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 		// conver the file into a layer
-	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .2}).addTo(map);
+	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .2, fill:'url(img/tiny-hatch.svg)',}).addTo(map);
 
 	// add the map to the layer controls
 	layerControl.addOverlay(MountainLionRangeLayer, "Mountain Lion Range");
@@ -127,6 +131,8 @@ $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 
 	ElkRangeLayer = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .2}).addTo(map);
 
+	// move the map to the area of the data
+	map.panTo(ElkRangeLayer.getBounds().getCenter());
 
 	// add the map to the layer controls
 	layerControl.addOverlay(ElkRangeLayer, "Elk Range");
@@ -156,33 +162,12 @@ L.control.layers(overlayMaps).addTo(map);
     
 
 	// add a legend
-var legend = L.control({ position: “bottomleft”});
-legend.onAdd = function(map) {
-var div = L.DomUtil.create(“div”, “legend”);
 
-div.innerHTML = “<h3>Legend</h3>”;
 
-	return div;
-
-	};
-legend.addTo(map);
-
-// button to show image
-var infoCounter = 2;
-$("#imagebutton").click( function() {
-			infoCounter++;
-			if (infoCounter % 2 == 0) {
-				$("#pagetext").hide('slow');
-				$("#imagebutton").text('Show info');
-			} else {
-				$("#pagetext").show('slow');
-				$("#imagebutton").text('Hide info');
-			}
-		});
-
+	});
 		
 	// end document ready
-});
+
 
 </script>
 </head>
@@ -191,16 +176,10 @@ $("#imagebutton").click( function() {
 
 <div id="header">
 	<h1><a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">Ranges of Mountain Lions and their Prey in California</a></h1>
-	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a><br></p>
+	<p>Data from <a href="https://data.cnra.ca.gov/dataset/mountain-lion-range-cwhr-m165-ds793">California Department of Fish and Wildlife</a></p>
 </div>
-	
-<div id="MLimage">
-	src="https://www.fs.usda.gov/sites/default/files/legacy_files/media/2014/09/mountainlion.jpg"
-	alt="Mountain Lion image from U.S. Forest Service Department of Agriculture" />
-
-</div>
+<div id="map"></div>
 
 
 </body>
 </html>
-
