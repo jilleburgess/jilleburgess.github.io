@@ -92,6 +92,12 @@
 	// to make sure that everything loads in the 
 	// right order
 	$(document).ready(function() {
+		
+	// toggle photo on
+	$("#togglephoto").click( function() {
+ 
+        $("#mountainlionpic").toggle();
+	});
 
 		// let's create our basemap!
 map = L.map('map').setView([37.93060712152794, -121.24149825856895],5.5);
