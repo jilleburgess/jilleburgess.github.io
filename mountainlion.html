@@ -13,7 +13,6 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-
 	<style>
 		html, body {
 			height: 100%;
@@ -92,7 +91,7 @@
 	$(document).ready(function() {
 
 		// let's create our basemap!
-map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.45);
+map = L.map('map').setView([38.74203810504401, -120.49345813586912],5.5);
 
 		
 		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from Esri NatGeo
@@ -117,7 +116,7 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
 		// the control let's the user turn on / off layers
 var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
-		   // function to style my choropleth map
+		   // function to style my map
     function style1(feature) {	   
 	    styleReturn = {
 		    weight : 1,
@@ -132,8 +131,8 @@ var layerControl = L.control.layers(baseMaps,null).addTo(map);
     
 		// let's add the Mountain Lion Range data
 $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
-		// conver the file into a layer
-	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .2, fill:'url(img/tiny-hatch.svg)',}).addTo(map);
+		// convert the file into a layer
+	MountainLionRangeLayer = L.geoJSON(data, {color: '#993404',fillColor: '#fec44f', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
 	layerControl.addOverlay(MountainLionRangeLayer, "Mountain Lion Range");
@@ -144,7 +143,7 @@ $.getJSON('./Mountain_Lion_Range_CWHR.geojson', function(data) {
 // let's add the Mule Deer Range data
 $.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
 
-	MuleDeerRangeLayer = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .2}).addTo(map);
+	MuleDeerRangeLayer = L.geoJSON(data, {color: '#7d1da3',fillColor: '#cf64fa', weight: 2, fillOpacity: .3}).addTo(map);
 
 
 	// add the map to the layer controls
@@ -155,10 +154,7 @@ $.getJSON('./Mule_Deer_Range_CWHR.geojson', function(data) {
 // let's add the Elk Range data
 $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 
-	ElkRangeLayer = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .2}).addTo(map);
-
-	// move the map to the area of the data
-	map.panTo(ElkRangeLayer.getBounds().getCenter());
+	ElkRangeLayer = L.geoJSON(data, {color: '#2e801f',fillColor: '#8be879', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
 	layerControl.addOverlay(ElkRangeLayer, "Elk Range");
@@ -167,7 +163,7 @@ $.getJSON('./Elk_Range_CWHR.geojson', function(data) {
 	// let's add the Bighorn Sheep data
 $.getJSON('./Bighorn_Sheep_Range_CWHR.geojson', function(data) {
 
-	BighornSheepRangeLayer = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .2}).addTo(map);
+	BighornSheepRangeLayer = L.geoJSON(data, {color: '#234891',fillColor: '#92b4f7', weight: 2, fillOpacity: .3}).addTo(map);
 
 	// add the map to the layer controls
 	layerControl.addOverlay(BighornSheepRangeLayer, "Bighorn Sheep Range");
